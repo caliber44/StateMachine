@@ -20,6 +20,10 @@ public class StateMachine : MonoBehaviour
     private float m_accumulatedTime;
     private float m_fixedTickTime;
     private bool isPlaying = true;
+
+    // Global speed scale (1 = normal speed, <1 = slower, >1 = faster)
+    public float TimeScale = 1f;
+
     public void Play()
     {
         isPlaying = true;
@@ -36,7 +40,7 @@ public class StateMachine : MonoBehaviour
     }
     private void Tick()
     {
-        m_accumulatedTime += Time.deltaTime;
+        m_accumulatedTime += Time.deltaTime * TimeScale;
 
         while (m_accumulatedTime >= m_fixedTickTime)
         {
