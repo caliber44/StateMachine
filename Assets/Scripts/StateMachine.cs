@@ -14,12 +14,13 @@ public interface IState
 }
 public class StateMachine : MonoBehaviour
 {
+    [SerializeField] private bool isPlaying = true;
+
     private Dictionary<int, IState> m_states = new Dictionary<int, IState>();
     private IState m_currentState;
     private IState m_previousState;
     private float m_accumulatedTime;
     private float m_fixedTickTime;
-    private bool isPlaying = true;
 
     // Global speed scale (1 = normal speed, <1 = slower, >1 = faster)
     public float TimeScale = 1f;
